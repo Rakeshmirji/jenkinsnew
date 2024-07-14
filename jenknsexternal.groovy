@@ -16,7 +16,7 @@ pipeline {
         stage('Test') {
             steps {
                 bat 'python ./newone/pythonsamplecode.py'
-                echo 'Testing..'
+                echo 'Testing ${params.fathername}..'
             }
         }
         stage('Deploy') {
