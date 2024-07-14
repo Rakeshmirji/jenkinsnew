@@ -14,7 +14,7 @@ pipeline {
                         branches: [[name: '*/main']],
                         extensions: [],
                         userRemoteConfigs: [[
-                            url: '(link unavailable)'
+                            url: 'https://github.com/Rakeshmirji/jenkinsnew.git'
                         ]]
                     )
                 )
@@ -22,7 +22,7 @@ pipeline {
         } 
         stage('build') {
             steps {
-                bat 'python ./newone/(link unavailable)'
+                bat 'python pythonsamplecode.py'
                 echo "hello how are you ${params.name} and address ${params.address}"
             }
         }
