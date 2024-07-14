@@ -6,15 +6,24 @@ def pipelineParams = [
 pipeline {
     agent any
 
-    parameters(pipelineParams)
-
     stages {
-        stage('Checkout') {
+        stage('Build') {
             steps {
                 git {
-                    url params.REPO_URL
-                    branch params.BRANCH
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Rakeshmirji/jenkinsnew.git']])
+                    echo 'Building..'
                 }
+                
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
