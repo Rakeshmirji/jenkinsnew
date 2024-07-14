@@ -1,8 +1,8 @@
-def pipelineParams = [
-    string(name: 'REPO_URL', defaultValue: 'https://github.com/Rakeshmirji/jenkinsnew.git', description: 'Repository URL'),
-    string(name: 'BRANCH', defaultValue: 'main', description: 'Branch to checkout')
-]
-
+import groovy.json.*
+import com.cloudbees.groovy.cps.NonCPS
+import java.text.SimpleDateFormat
+def fathername = params.fathername
+configMap << fathername
 pipeline {
     agent any
 
@@ -16,7 +16,7 @@ pipeline {
         stage('Test') {
             steps {
                 bat 'python ./newone/pythonsamplecode.py'
-                echo 'Testing ${params.fathername}..'
+                echo 'Testing ${fathername}'
             }
         }
         stage('Deploy') {
