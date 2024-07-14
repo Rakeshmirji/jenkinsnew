@@ -1,8 +1,9 @@
 import groovy.json.*
 import com.cloudbees.groovy.cps.NonCPS
 import java.text.SimpleDateFormat
-def fathername = params.fathername
-configMap << fathername
+def configMap = [
+    fathername : params.fathername,
+]
 pipeline {
     agent any
 
