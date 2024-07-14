@@ -14,7 +14,7 @@ pipeline {
                         branches: [[name: '*/main']],
                         extensions: [],
                         userRemoteConfigs: [[
-                            url: 'https://github.com/Rakeshmirji/jenkinsnew'
+                            url: 'https://github.com/Rakeshmirji/jenkinsnew.git'
                         ]]
                     )
                 )
