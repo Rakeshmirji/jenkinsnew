@@ -4,12 +4,8 @@ import java.text.SimpleDateFormat
 def configMap = [
     fathername : params.fathername,
 ]
-def jsonConfigString = JsonOutput.toJson(configMap)
-            // Convert JSON string to JSON Object
-def jsonConfig = readJSON text: jsonConfigString
-            // Save config as JSON in correct dir
-def configPath = "${env.WORKSPACE}/newone/automation1.json"
-writeJSON(file: configPath, json: jsonConfig, pretty: 4)
+
+
 pipeline {
     agent any
 
@@ -22,6 +18,15 @@ pipeline {
         }
         stage('Test') {
             steps {
+                script{
+                    def jsonConfigString = JsonOutput.toJson(configMap)
+                    // Convert JSON string to JSON Object
+                    def jsonConfig = readJSON text: jsonConfigString
+                    // Save config as JSON in correct dir
+                    def configPath = "${env.WORKSPACE}/newone/automation1.json"
+                    writeJSON(file: configPath, json: jsonConfig, pretty: 4)
+                
+                }
                 bat 'python ./newone/pythonsamplecode.py'
                 println "Testing ${configMap.fathername}"
                 echo "Testing ${configMap.fathername}"
