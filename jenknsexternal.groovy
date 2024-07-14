@@ -1,29 +1,20 @@
+def pipelineParams = [
+    string(name: 'REPO_URL', defaultValue: 'https://github.com/Rakeshmirji/jenkinsnew.git', description: 'Repository URL'),
+    string(name: 'BRANCH', defaultValue: 'main', description: 'Branch to checkout')
+]
+
 pipeline {
     agent any
 
-    parameters {
-        string(name: 'name', defaultValue: 'World', description: 'Your name')
-        string(name: 'address', defaultValue: 'Earth', description: 'Your address')
-    }
+    parameters(pipelineParams)
 
     stages {
-        stage('checkout') {
+        stage('Checkout') {
             steps {
-                checkout scm(
-                    git (
-                        branches: [[name: '*/main']],
-                        extensions: [],
-                        userRemoteConfigs: [[
-                            url: 'https://github.com/Rakeshmirji/jenkinsnew'
-                        ]]
-                    )
-                )
-            }
-        } 
-        stage('build') {
-            steps {
-                bat 'python pythonsamplecode.py'
-                echo "hello how are you ${params.name} and address ${params.address}"
+                git {
+                    url params.REPO_URL
+                    branch params.BRANCH
+                }
             }
         }
     }
