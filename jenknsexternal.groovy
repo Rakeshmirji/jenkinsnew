@@ -15,12 +15,14 @@ pipeline {
         }
         stage('Test') {
             steps {
+                bat 'python ./newone/pythonsamplecode.py'
                 echo 'Testing..'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                bat 'python ./pythonsamplecode.py'
             }
         }
     }
