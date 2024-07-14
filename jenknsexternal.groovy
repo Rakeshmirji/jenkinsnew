@@ -17,7 +17,7 @@ pipeline {
         stage('Test') {
             steps {
                 bat 'python ./newone/pythonsamplecode.py'
-                echo 'Testing ${fathername}'
+                println 'Testing ${configMap.fathername}'
             }
         }
         stage('Deploy') {
