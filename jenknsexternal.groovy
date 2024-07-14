@@ -9,11 +9,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git {
                     checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Rakeshmirji/jenkinsnew.git']])
                     echo 'Building..'
-                }
-                
             }
         }
         stage('Test') {
