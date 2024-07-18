@@ -28,8 +28,7 @@ pipeline {
                 
                 }
                 bat 'python ./newone/pythonsamplecode.py'
-                powershellPath = "${env.WORKSPACE}/Automation.ps1"
-                result = powershell(powershellPath)
+                powershell -File "${env.WORKSPACE}/newone/Automation.ps1"
                 println "Testing ${configMap.fathername}"
                 echo "Testing ${configMap.fathername}"
             }
