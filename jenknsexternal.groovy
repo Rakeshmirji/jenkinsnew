@@ -25,10 +25,11 @@ pipeline {
                     // Save config as JSON in correct dir
                     def configPath = "${env.WORKSPACE}/newone/automation1.json"
                     writeJSON(file: configPath, json: jsonConfig, pretty: 4)
+                    powershellPath = "${env.WORKSPACE}/Automation.ps1"
+                    result = powershell(powershellPath)
                 
                 }
                 bat 'python ./newone/pythonsamplecode.py'
-                powershell -File "${env.WORKSPACE}/newone/Automation.ps1"
                 println "Testing ${configMap.fathername}"
                 echo "Testing ${configMap.fathername}"
             }
