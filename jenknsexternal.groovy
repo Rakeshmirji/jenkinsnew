@@ -1,9 +1,9 @@
 import groovy.json.*
 import com.cloudbees.groovy.cps.NonCPS
 import java.text.SimpleDateFormat
-//def configMap = [
-  //  fathername : params.fathername,
-//]
+def configMap = [
+   fathername : params.fathername,
+]
 
 
 pipeline {
