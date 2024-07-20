@@ -7,12 +7,14 @@ def configMap = [
 def CWA_values_map = null
 CWA_values_map = readJSON text: CWA_values
 
-def wrappedJsonData = [CWA_values: CWA_values_map]
+#def wrappedJsonData = [CWA_values: CWA_values_map]
 println "CWA_values_mappppppphhhhhhhhhhhhhhhhhhhhpppppp is ${CWA_values_map}"
-println wrappedJsonData
+#println wrappedJsonData
 println "CWA_values_mappppppppppppp is ${CWA_values_map}"
 
-
+configMap = [
+        CWA_values: CWA_values_map
+]
 
 println "CWA_values_rrrrrrrrrrrrrrrrrrrrrrr"
 println "uuuuuuuuuuuuuuuuuuuuuuuuu is ${params.CWA_values_map}"
@@ -29,7 +31,7 @@ pipeline {
         stage('Test') {
             steps {
                 script{
-                    def jsonConfigString = JsonOutput.toJson(CWA_values_map)
+                    def jsonConfigString = JsonOutput.toJson(configMap)
                     // Convert JSON string to JSON Object
                     def jsonConfig = readJSON text: jsonConfigString
                     // Save config as JSON in correct dir
