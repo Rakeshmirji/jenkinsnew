@@ -31,8 +31,9 @@ write-host "the json is $json"
 [string]$Global:StoreTypeNSG = $json.CWA_values.Store_TypeNSG
 #[string]$Global:TestUserName = $json.CWA_values.Test_User_Name
 #[string]$Global:OnpremPass = $json.CWA_Values.Test_User_Password.plainText
-[string]$Global:StoreTypeX1 = $json.CWA_values.Store_TypeX1
-[string]$Global:StoreTypeX1 = $json.Store_TypeX1
+[string]$Global:StoreTypeX2 = $json.CWA_values.Test_Suite_Name
+[string]$Global:StoreTypeX1 = $json.Test_Suite_Name
 Write-Host "fffffffffffffffff"
 Write-Host $StoreTypeX1
+Write-Host $StoreTypeX2
 Write-Host "fffffffffffffffff"
