@@ -4,7 +4,8 @@ import java.text.SimpleDateFormat
 def configMap = [
    fathername : params.fathername,
 ]
-
+def CWA_values_map = null
+CWA_values_map = readJSON text: CWA_values
 
 pipeline {
     agent any
