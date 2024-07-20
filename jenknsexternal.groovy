@@ -24,7 +24,7 @@ pipeline {
                     // Convert JSON string to JSON Object
                     def jsonConfig = readJSON text: jsonConfigString
                     // Save config as JSON in correct dir
-                    def configPath = "${env.WORKSPACE}/newone/automation1.json"
+                    def configPath = "${env.WORKSPACE}/automation1.json"
                     writeJSON(file: configPath, json: jsonConfig, pretty: 4)
                     powershellPath = "${env.WORKSPACE}/Automation.ps1"
                     result = powershell(powershellPath)
