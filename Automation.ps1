@@ -11,11 +11,11 @@ Write-Host "hereParent = $hereParent"
 
 
 ### Convert Json to array list to get values #####
-$json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
-$Global:jsondata = $json
-#$json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
-$Global:jsondata = $json | Format-Table -AutoSize
-write-host "the jsondata is $Global:jsondata"
+# $json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
+# $Global:jsondata = $json
+# #$json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
+# $Global:jsondata = $json | Format-Table -AutoSize
+# write-host "the jsondata is $Global:jsondata"
 
 $json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
 $Global:jsondata = $json | ConvertTo-Json -Depth 100
