@@ -8,7 +8,7 @@ def CWA_values_map = null
 CWA_values_map = readJSON text: CWA_values
 println "CWA_values_mappppppppppppp is ${CWA_values_map}"
 println "CWA_values_rrrrrrrrrrrrrrrrrrrrrrr"
-println "CWA_values_mappppppppppppp is ${params.CWA_values_map}"
+println "uuuuuuuuuuuuuuuuuuuuuuuuu is ${params.CWA_values_map}"
 pipeline {
     agent any
 
