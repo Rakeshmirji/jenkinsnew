@@ -28,6 +28,7 @@ pipeline {
                     writeJSON(file: configPath, json: jsonConfig, pretty: 4)
                     powershellPath = "${env.WORKSPACE}/Automation.ps1"
                     result = powershell(powershellPath)
+                    println("Cwa_Values_onprem is ----  ${params.CWA_values_map}")
                 
                 }
                 bat 'python ./newone/pythonsamplecode.py'
