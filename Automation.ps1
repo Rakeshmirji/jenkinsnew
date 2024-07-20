@@ -35,13 +35,16 @@ Write-Host $Global:jsondata
 #[string]$Global:OnpremPass = $json.CWA_Values.Test_User_Password.plainText
 [string]$Global:StoreTypeX2 = $jsondata.CWA_values.Test_Suite_Name
 [string]$Global:StoreTypeX1 = $jsondata.Test_Suite_Name
-
+Write-Host $jsondata.CWA_Values.ResourceName
 Write-Host "fffffffffffffffff"
 Write-Host $StoreTypeX1
+Write-Host $jsondata.CWA_Values.ResourceName
 Write-Host "fffffffffffffffff"
 Write-Host $StoreURLX1
+Write-Host $jsondata.CWA_Values.ResourceName
 Write-Host "fffffffffffffffff"
 Write-Host $StoreNameNSG
+Write-Host $jsondata.CWA_Values.ResourceName
 Write-Host "fffffffffffffffff"
 Write-Host $StoreName
 Write-Host "fffffffffffffffff"
