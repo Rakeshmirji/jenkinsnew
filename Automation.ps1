@@ -13,6 +13,8 @@ Write-Host "hereParent = $hereParent"
 ### Convert Json to array list to get values #####
 $json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
 $Global:jsondata = $json
+#$json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
+$Global:jsondata = $json | Format-Table -AutoSize
 #### Read Values supplied in JSON file ######
 ### CWA Values ###
 write-host "the json is $json"
