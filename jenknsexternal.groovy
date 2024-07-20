@@ -6,7 +6,7 @@ def configMap = [
 ]
 def CWA_values_map = null
 CWA_values_map = readJSON text: CWA_values
-println "CWA_values_mappppppppppppp is ${CWA_values_map.params}"
+println "CWA_values_mappppppppppppp is ${CWA_values_map}"
 
 pipeline {
     agent any
