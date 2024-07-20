@@ -17,10 +17,11 @@ $Global:jsondata = $json
 $Global:jsondata = $json | Format-Table -AutoSize
 write-host "the jsondata is $Global:jsondata"
 
-# $json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
-# $Global:jsondata = $json | ConvertTo-Json -Depth 100
-# Write-Host "The JSON is:"
-# Write-Host $Global:jsondata
+$json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
+$Global:jsondata = $json | ConvertTo-Json -Depth 100
+Write-Host "The JSON is:"
+
+Write-Host $Global:jsondata
 # #### Read Values supplied in JSON file ######
 # ### CWA Values ###
 write-host "the json is $json"
