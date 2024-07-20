@@ -40,7 +40,7 @@ Write-Host "fffffffffffffffff"
 Write-Host $StoreTypeX1
 Write-Host $jsondata.CWA_Values.ResourceName
 Write-Host "fffffffffffffffff"
-Write-Host $StoreURLX1
+Write-Host $StoreURLNSG
 Write-Host $jsondata.CWA_Values.ResourceName
 Write-Host "fffffffffffffffff"
 Write-Host $StoreNameNSG
