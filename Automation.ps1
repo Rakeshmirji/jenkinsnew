@@ -35,5 +35,16 @@ write-host "the json is $json"
 [string]$Global:StoreTypeX1 = $json.Test_Suite_Name
 Write-Host "fffffffffffffffff"
 Write-Host $StoreTypeX1
+Write-Host "fffffffffffffffff"
+Write-Host $StoreURLX1
+Write-Host "fffffffffffffffff"
+Write-Host $StoreNameNSG
+Write-Host "fffffffffffffffff"
+Write-Host $StoreName
+Write-Host "fffffffffffffffff"
+Write-Host $StoreURLNSG
+Write-Host "fffffffffffffffff"
+Write-Host $StoreTypeX2
+Write-Host $StoreTypeX2
 Write-Host $StoreTypeX2
 Write-Host "fffffffffffffffff"
