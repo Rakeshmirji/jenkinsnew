@@ -15,7 +15,7 @@ $json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
 $Global:jsondata = $json
 #$json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
 $Global:jsondata = $json | Format-Table -AutoSize
-write-host "the json is $jsondata"
+write-host "the json is $Global:jsondata"
 #### Read Values supplied in JSON file ######
 ### CWA Values ###
 write-host "the json is $json"
