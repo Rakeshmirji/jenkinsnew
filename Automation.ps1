@@ -29,7 +29,7 @@ Write-Host $Global:jsondata
 [string]$Global:StoreURLX1 = $jsondata.CWA_values.Store_URLX1
 [string]$Global:StoreNameNSG = $jsondata.CWA_Values.Store_NameNSG
 [string]$Global:StoreName = $jsondata.CWA_values.Store_NameX1
-[string]$Global:StoreURLNSG = $jsondata.CWA_Values.Store_URLNSG
+[string]$Global:StoreURLNSG = $jsondata.CWA_Values.ResourceName
 [string]$Global:StoreTypeNSG = $jsondata.CWA_values.Store_TypeNSG
 #[string]$Global:TestUserName = $json.CWA_values.Test_User_Name
 #[string]$Global:OnpremPass = $json.CWA_Values.Test_User_Password.plainText
