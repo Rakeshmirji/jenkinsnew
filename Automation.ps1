@@ -13,15 +13,15 @@ Write-Host "hereParent = $hereParent"
 ### Convert Json to array list to get values #####
 $json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
 $Global:jsondata = $json
-#$json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
-$Global:jsondata = $json | Format-Table -AutoSize
-write-host "the json is $Global:jsondata"
-$json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
-$Global:jsondata = $json | ConvertTo-Json -Depth 100
-Write-Host "The JSON is:"
-Write-Host $Global:jsondata
-#### Read Values supplied in JSON file ######
-### CWA Values ###
+# #$json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
+# $Global:jsondata = $json | Format-Table -AutoSize
+# write-host "the json is $Global:jsondata"
+# $json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
+# $Global:jsondata = $json | ConvertTo-Json -Depth 100
+# Write-Host "The JSON is:"
+# Write-Host $Global:jsondata
+# #### Read Values supplied in JSON file ######
+# ### CWA Values ###
 write-host "the json is $json"
 [string]$Global:StoreTypeX1 = $json.CWA_values.Store_TypeX1
 [string]$Global:StoreURLX1 = $json.CWA_values.Store_URLX1
