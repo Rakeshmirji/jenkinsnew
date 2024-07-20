@@ -9,7 +9,7 @@ CWA_values_map = readJSON text: CWA_values
 
 #def wrappedJsonData = [CWA_values: CWA_values_map]
 println "CWA_values_mappppppphhhhhhhhhhhhhhhhhhhhpppppp is ${CWA_values_map}"
-#println wrappedJsonData
+println wrappedJsonData
 println "CWA_values_mappppppppppppp is ${CWA_values_map}"
 
 configMap = [
