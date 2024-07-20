@@ -20,7 +20,7 @@ pipeline {
         stage('Test') {
             steps {
                 script{
-                    def jsonConfigString = JsonOutput.toJson(configMap)
+                    def jsonConfigString = JsonOutput.toJson(CWA_values_map)
                     // Convert JSON string to JSON Object
                     def jsonConfig = readJSON text: jsonConfigString
                     // Save config as JSON in correct dir
