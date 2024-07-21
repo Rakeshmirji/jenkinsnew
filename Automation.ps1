@@ -39,7 +39,10 @@ Write-Host $StoreURLNSG
 [string]$Global:StoreTypeX1 = $jsondata.Test_Suite_Name
 Write-Host $jsondata.CWA_values.ResourceName
 Write-Host "fffffffffffffffff"
+
 Write-Host $StoreURLNSG
+$resourceName = (ConvertFrom-Json $jsondata).CWA_values.ResourceName
+Write-Host $resourceName
 Write-Host $jsondata.CWA_values.ResourceName
 Write-Host "fffffffffffffffff"
 Write-Host $StoreURLNSG
