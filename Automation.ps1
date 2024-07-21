@@ -31,7 +31,7 @@ Write-Host $StoreURLNSG
 [string]$Global:StoreURLX1 = $jsondata.CWA_values.Store_URLX1
 [string]$Global:StoreNameNSG = $jsondata.CWA_values.Store_NameNSG
 [string]$Global:StoreName = $jsondata.CWA_values.Store_NameX1
-[string]$Global:StoreURLNSG = $jsondata.CWA_Values.ResourceName
+[string]$Global:StoreURLNSG = $jsondata.CWA_values.ResourceName
 [string]$Global:StoreTypeNSG = $jsondata.CWA_values.Store_TypeNSG
 #[string]$Global:TestUserName = $json.CWA_values.Test_User_Name
 #[string]$Global:OnpremPass = $json.CWA_Values.Test_User_Password.plainText
@@ -39,7 +39,7 @@ Write-Host $StoreURLNSG
 [string]$Global:StoreTypeX1 = $jsondata.Test_Suite_Name
 Write-Host $jsondata.CWA_values.ResourceName
 Write-Host "fffffffffffffffff"
-Write-Host $StoreTypeX1
+Write-Host $StoreURLNSG
 Write-Host $jsondata.CWA_values.ResourceName
 Write-Host "fffffffffffffffff"
 Write-Host $StoreURLNSG
