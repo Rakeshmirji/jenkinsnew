@@ -33,8 +33,14 @@ pipeline {
         stage('Test') {
             steps {
                 script{
-                    def myArray = params.MY_ARRAY//.split(',')
-                    println myArray
+                    def myString = params.MY_ARRAY//.split(',')
+                    println myString
+
+                    def myArray = myString.split(',')
+
+                    for (String value : myArray) {
+                        println "Value: $value, Type: ${value.getClass().getName()}"
+                    }
                     //def MY_ARRAY = System.getenv('MY_ARRAY')
                     // Now you can access the array in your Groovy code
                     //println MY_ARRAY
