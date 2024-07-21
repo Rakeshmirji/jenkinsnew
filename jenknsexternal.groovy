@@ -20,9 +20,9 @@ println "CWA_values_rrrrrrrrrrrrrrrrrrrrrrr"
 println "uuuuuuuuuuuuuuuuuuuuuuuuu is ${params.CWA_values_map}"
 pipeline {
     agent any
-     environment {
-        MY_ARRAY = "${params.MY_ARRAY}"
-    }
+    //  environment {
+    //     MY_ARRAY = "${params.MY_ARRAY}"
+    // }
     stages {
         stage('Build') {
             steps {
