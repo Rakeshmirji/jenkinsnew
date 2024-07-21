@@ -17,7 +17,7 @@ Write-Host "hereParent = $hereParent"
 # $Global:jsondata = $json | Format-Table -AutoSize
 # write-host "the jsondata is $Global:jsondata"
 
-$json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
+$json = (Get-Content "$here\automation1.json" -Raw) | ConvertFrom-Json
 $Global:jsondata = $json
 #### Read Values supplied in JSON file ######
 ### CWA Values ###
