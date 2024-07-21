@@ -35,7 +35,7 @@ pipeline {
                 script{
                     def myArray = params.MY_ARRAY.split(',')
                     println myArray
-                    #def MY_ARRAY = System.getenv('MY_ARRAY')
+                    //def MY_ARRAY = System.getenv('MY_ARRAY')
                     // Now you can access the array in your Groovy code
                     println MY_ARRAY
                     def jsonConfigString = JsonOutput.toJson(configMap)
