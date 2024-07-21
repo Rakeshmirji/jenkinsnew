@@ -64,7 +64,7 @@ $Global:jsondata = $json
 ### CWA Values ###
 Write-Host "the json is $jsondata"
 
-[string]$Global:StoreTypeX1 = $json.CWA_values.Store_TypeX1
+[string]$Global:StoreTypeX1 = $json.CWA_values.ResourceName
 [string]$Global:StoreURLX1 = $json.CWA_values.Store_URLX1
 [string]$Global:StoreNameNSG = $json.CWA_values.Store_NameNSG
 [string]$Global:StoreName = $json.CWA_values.Store_NameX1
