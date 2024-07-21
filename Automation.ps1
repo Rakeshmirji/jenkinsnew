@@ -37,19 +37,19 @@ $jsondata=(ConvertFrom-Json $jsondata)
 #[string]$Global:OnpremPass = $json.CWA_Values.Test_User_Password.plainText
 [string]$Global:StoreTypeX2 = $jsondata.CWA_values.Test_Suite_Name
 [string]$Global:StoreTypeX1 = $jsondata.Test_Suite_Name
-Write-Host $jsondata.CWA_values.ResourceName
+#Write-Host $jsondata.CWA_values.ResourceName
 Write-Host "fffffffffffffffff"
 
 Write-Host $StoreURLNSG
 $resourceName = (ConvertFrom-Json $jsondata).CWA_values.ResourceName
 Write-Host $resourceName
-Write-Host $jsondata.CWA_values.ResourceName
+#Write-Host $jsondata.CWA_values.ResourceName
 Write-Host "fffffffffffffffff"
 Write-Host $StoreURLNSG
-Write-Host $jsondata.CWA_values.ResourceName
+#Write-Host $jsondata.CWA_values.ResourceName
 Write-Host "fffffffffffffffff"
 Write-Host $StoreNameNSG
-Write-Host $jsondata.CWA_values.ResourceName
+#Write-Host $jsondata.CWA_values.ResourceName
 Write-Host "fffffffffffffffff"
 Write-Host $StoreName
 Write-Host "fffffffffffffffff"
