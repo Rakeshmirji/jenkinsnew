@@ -21,7 +21,7 @@ $json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
 $Global:jsondata = $json
 #### Read Values supplied in JSON file ######
 ### CWA Values ###
-write-host "the json is $json"
+write-host "the json is $jsondata"
 [string]$Global:StoreTypeX1 = $json.CWA_values.Store_TypeX1
 [string]$Global:StoreURLX1 = $json.CWA_values.Store_URLX1
 [string]$Global:StoreNameNSG = $json.CWA_Values.Store_NameNSG
