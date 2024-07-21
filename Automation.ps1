@@ -65,10 +65,10 @@ $Global:jsondata = $json
 Write-Host "the json is "
 $json | ConvertTo-Json -Depth 10 | Write-Host
 [string]$Global:StoreTypeX1 = $json.CWA_values.ResourceName
-[string]$Global:StoreURLX1 = $json.CWA_values.Store_URLX1
-[string]$Global:StoreNameNSG = $json.CWA_values.Store_NameNSG
-[string]$Global:StoreName = $json.CWA_values.Store_NameX1
-[string]$Global:StoreURLNSG = $json.CWA_values.Store_URLNSG
+[string]$Global:StoreURLX1 = $json.CWA_values.app_name
+[string]$Global:StoreNameNSG = $json.CWA_values.ddc_hostname
+[string]$Global:StoreName = $json.CWA_values.pathToModule
+[string]$Global:StoreURLNSG = $json.CWA_values.ClientMachineUsername
 [string]$Global:StoreTypeNSG = $json.CWA_values.Store_TypeNSG
 #[string]$Global:TestUserName = $json.CWA_values.Test_User_Name
 #[string]$Global:OnpremPass = $json.CWA_values.Test_User_Password.plainText
