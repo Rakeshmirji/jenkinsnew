@@ -18,7 +18,8 @@ Write-Host "hereParent = $hereParent"
 # write-host "the jsondata is $Global:jsondata"
 
 $json = (Get-Content "$here\automation1.json" -Raw) | ConvertFrom-Json
-$Global:jsondata = $json
+$Global:jsondata = $json | ConvertTo-Json -Depth 100
+#$Global:jsondata = $json
 #### Read Values supplied in JSON file ######
 ### CWA Values ###
 write-host "the json is $jsondata"
