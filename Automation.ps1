@@ -18,54 +18,26 @@ Write-Host "hereParent = $hereParent"
 # write-host "the jsondata is $Global:jsondata"
 
 $json = (Get-Content "$here\Automation1.json" -Raw) | ConvertFrom-Json
-$Global:jsondata = $json | ConvertTo-Json -Depth 100
-Write-Host "The JSON is:"
-
-Write-Host $Global:jsondata
-[string]$Global:StoreURLNSG = $jsondata.CWA_Values.ResourceName
-Write-Host $StoreURLNSG
-# #### Read Values supplied in JSON file ######
-# ### CWA Values ###
-#$jsondata=(ConvertFrom-Json $jsondata)
-$jsondata = ConvertFrom-Json $jsondata
-[string]$Global:StoreTypeX1 = $jsondata.CWA_values.Store_TypeX1
-[string]$Global:StoreURLX1 = $jsondata.CWA_values.Store_URLX1
-[string]$Global:StoreNameNSG = $jsondata.CWA_values.Store_NameNSG
-[string]$Global:StoreName = $jsondata.CWA_values.Store_NameX1
-[string]$Global:StoreURLNSG = $jsondata.CWA_values.ResourceName
-[string]$Global:StoreTypeNSG = $jsondata.CWA_values.Store_TypeNSG
+$Global:jsondata = $json
+#### Read Values supplied in JSON file ######
+### CWA Values ###
+write-host "the json is $json"
+[string]$Global:StoreTypeX1 = $json.CWA_values.Store_TypeX1
+[string]$Global:StoreURLX1 = $json.CWA_values.Store_URLX1
+[string]$Global:StoreNameNSG = $json.CWA_Values.Store_NameNSG
+[string]$Global:StoreName = $json.CWA_values.Store_NameX1
+[string]$Global:StoreURLNSG = $json.CWA_Values.Store_URLNSG
+[string]$Global:StoreTypeNSG = $json.CWA_values.Store_TypeNSG
 #[string]$Global:TestUserName = $json.CWA_values.Test_User_Name
 #[string]$Global:OnpremPass = $json.CWA_Values.Test_User_Password.plainText
-[string]$Global:StoreTypeX2 = $jsondata.CWA_values.Test_Suite_Name
-[string]$Global:StoreTypeX1 = $jsondata.Test_Suite_Name
-Write-Host $StoreNameNSG
-Write-Host $StoreURLNSG
-Write-Host $StoreNameNSG
-Write-Host $StoreTypeX1
-#Write-Host $jsondata.CWA_values.ResourceName
-Write-Host "fffffffffffffffff"
-$jsondata = (ConvertFrom-Json $jsondata)
-[string]$Global:StoreNameNSG = $jsondata.CWA_values.Store_NameNSG
-Write-Host $StoreNameNSG
-Write-Host $StoreURLNSG
-$resourceName = (ConvertFrom-Json $jsondata).CWA_values.ResourceName
-Write-Host $resourceName
-#Write-Host $jsondata.CWA_values.ResourceName
-Write-Host "fffffffffffffffff"
+[string]$Global:BuildBranchName = $json.CWA_values.BuildBranchName
 
-$jsondata=(ConvertFrom-Json $jsondata)
-[string]$Global:StoreNameNSG = $jsondata.CWA_values.Store_NameNSG
-Write-Host $StoreURLNSG
-#Write-Host $jsondata.CWA_values.ResourceName
-Write-Host "fffffffffffffffff"
-Write-Host $StoreNameNSG
-#Write-Host $jsondata.CWA_values.ResourceName
-Write-Host "fffffffffffffffff"
-Write-Host $StoreName
-Write-Host "fffffffffffffffff"
-Write-Host $StoreURLNSG
-Write-Host "fffffffffffffffff"
-Write-Host $StoreTypeX2
-Write-Host $StoreTypeX2
-Write-Host $StoreTypeX2
-Write-Host "fffffffffffffffff"
+write-host "the StoreTypeX1 is $Global:StoreTypeX1"
+write-host "the StoreURLX1 is $Global:StoreURLX1"
+write-host "the StoreNameNSG is $Global:StoreNameNSG"
+write-host "the StoreName is $Global:StoreName"
+write-host "the StoreURLNSG is $Global:StoreURLNSG"
+write-host "the StoreTypeNSG is $Global:StoreTypeNSG"
+#write-host "the TestUserName is $Global:TestUserName"
+#write-host "the OnpremPass is $Global:OnpremPass"  
+write-host "the BuildBranchName is $Global:BuildBranchName"
