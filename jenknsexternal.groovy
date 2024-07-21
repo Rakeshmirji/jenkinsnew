@@ -20,7 +20,9 @@ println "CWA_values_rrrrrrrrrrrrrrrrrrrrrrr"
 println "uuuuuuuuuuuuuuuuuuuuuuuuu is ${params.CWA_values_map}"
 pipeline {
     agent any
-
+     environment {
+        MY_ARRAY = "${params.MY_ARRAY}"
+    }
     stages {
         stage('Build') {
             steps {
@@ -31,6 +33,11 @@ pipeline {
         stage('Test') {
             steps {
                 script{
+                    def myArray = params.MY_ARRAY.split(',')
+                    println myArray
+                    #def MY_ARRAY = System.getenv('MY_ARRAY')
+                    // Now you can access the array in your Groovy code
+                    println MY_ARRAY
                     def jsonConfigString = JsonOutput.toJson(configMap)
                     // Convert JSON string to JSON Object
                     def jsonConfig = readJSON text: jsonConfigString
