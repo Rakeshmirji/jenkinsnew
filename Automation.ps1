@@ -22,6 +22,8 @@ $Global:jsondata = $json | ConvertTo-Json -Depth 100
 Write-Host "The JSON is:"
 
 Write-Host $Global:jsondata
+[string]$Global:StoreURLNSG = $jsondata.CWA_Values.ResourceName
+Write-Host $StoreURLNSG
 # #### Read Values supplied in JSON file ######
 # ### CWA Values ###
 
