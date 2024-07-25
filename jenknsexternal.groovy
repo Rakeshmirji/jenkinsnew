@@ -14,7 +14,8 @@ println "CWA_values_mappppppppppppp is ${CWA_values_map}"
 configMap = [
         CWA_values: CWA_values_map
 ]
-
+def myString = params.describe
+println myString
 println "CWA_values_rrrrrrrrrrrrrrrrrrrrrrr"
 println "uuuuuuuuuuuuuuuuuuuuuuuuu is ${params.CWA_values_map}"
 pipeline {
