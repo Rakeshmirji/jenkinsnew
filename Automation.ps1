@@ -83,3 +83,7 @@ Write-Host "the StoreTypeNSG is $Global:StoreTypeNSG"
 # Write-Host "the TestUserName is $Global:TestUserName"
 # Write-Host "the OnpremPass is $Global:OnpremPass"
 Write-Host "the BuildBranchName is $Global:BuildBranchName"
+$myVariable = Get-Content -Path "variable.txt"
+
+# Print the variable
+Write-Host "The variable from Groovy is: $myVariable"
