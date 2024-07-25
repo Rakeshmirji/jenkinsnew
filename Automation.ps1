@@ -87,3 +87,9 @@ $myVariable = Get-Content -Path "variable.txt"
 
 # Print the variable
 Write-Host "The variable from Groovy is: $myVariable"
+param (
+    [string]$myString1
+)
+
+# Print the variable
+Write-Host "The variable from Groovy is: $myString1"
