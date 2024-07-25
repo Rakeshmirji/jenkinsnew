@@ -6,11 +6,6 @@ def configMap = [
 ]
 def CWA_values_map = null
 CWA_values_map = readJSON text: CWA_values
-def describeblock = "Hello, PowerShell!"
-
-// Write the variable to a file
-new File("variable.txt").text = describeblock
-
 //def wrappedJsonData = [CWA_values: CWA_values_map]
 println "CWA_values_mappppppphhhhhhhhhhhhhhhhhhhhpppppp is ${CWA_values_map}"
 //println wrappedJsonData
