@@ -18,7 +18,8 @@ def myString1 = params.describe
 println myString1
 // Define your variable
 def myVariable = "Hello, PowerShell!"
-
+def DescribeToExecute = ["DescribeToExecute": params.DescribeToExecute]
+configMap << DescribeToExecute
 // Execute the PowerShell script with the variable as an argument
 println "CWA_values_rrrrrrrrrrrrrrrrrrrrrrr"
 println "uuuuuuuuuuuuuuuuuuuuuuuuu is ${params.CWA_values_map}"

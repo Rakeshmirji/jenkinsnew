@@ -93,3 +93,5 @@ param (
 
 # Print the variable
 Write-Host "The variable from Groovy is: $myString1"
+$DescribeBlockToExecute = $json.DescribeToExecute
+Write-Host "Describe block to execute $DescribeBlockToExecute"
