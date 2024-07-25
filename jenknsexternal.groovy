@@ -20,10 +20,6 @@ println myString1
 def myVariable = "Hello, PowerShell!"
 
 // Execute the PowerShell script with the variable as an argument
-def process = "powershell.exe -File Automation.ps1 -myVariable '${myString1}'".execute()
-process.waitFor()
-println process.text
-
 println "CWA_values_rrrrrrrrrrrrrrrrrrrrrrr"
 println "uuuuuuuuuuuuuuuuuuuuuuuuu is ${params.CWA_values_map}"
 pipeline {
