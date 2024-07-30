@@ -76,7 +76,7 @@ pipeline {
 
 
 
-                nextDescribeToExecute = ["DescribeToExecute": i]
+                nextDescribeToExecute = ["DescribeToExecute": myArray[i]]
                 configMap << nextDescribeToExecute
 
                 jsonConfigString = JsonOutput.toJson(configMap)
