@@ -49,15 +49,15 @@ pipeline {
                     //def MY_ARRAY = System.getenv('MY_ARRAY')
                     // Now you can access the array in your Groovy code
                     //println MY_ARRAY
-                    for (int i = 0; i < (myArray.size()); i++) {
-                def value = myArray[i]
-                println "Value: $value, Type: ${value.getClass().getName()}"
-                // You can add more logic here
-            }
+            //         for (int i = 0; i < (myArray.size()); i++) {
+            //     def value = myArray[i]
+            //     println "Value: $value, Type: ${value.getClass().getName()}"
+            //     // You can add more logic here
+            // }
 
 
 
-            for (int i = 0; i < myArray.size(); i++) {
+            for (int i = 0; i <= myArray.size() - 1; i++) {
                 def value = myArray[i]
                 println "Value: $value, Type: ${value.getClass().getName()}"
                 // You can add more logic here
@@ -72,9 +72,6 @@ pipeline {
                 result = powershell(powershellPath)
                 //CWA_values_map = readJSON text: CWA_values
                 //println("Cwa_Values_onprem is ----  ${params.CWA_values_map}")
-                    
-
-
 
                 nextDescribeToExecute = ["DescribeToExecute": myArray[i]]
                 configMap << nextDescribeToExecute
