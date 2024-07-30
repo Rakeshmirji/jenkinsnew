@@ -49,7 +49,7 @@ pipeline {
                     //def MY_ARRAY = System.getenv('MY_ARRAY')
                     // Now you can access the array in your Groovy code
                     //println MY_ARRAY
-                    for (int i = 0; i < ((myArray.size())+1); i++) {
+                    for (int i = 0; i <= (myArray.size()); i++) {
                 def value = myArray[i]
                 println "Value: $value, Type: ${value.getClass().getName()}"
                 // You can add more logic here
