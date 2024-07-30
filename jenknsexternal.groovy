@@ -38,7 +38,7 @@ pipeline {
         stage('Test') {
             steps {
                 script{
-                    def myString = params.MY_ARRAY//.split(',')
+                    def myString = params.MY_ARRAY  + ",dummyvalue"
                     println myString
 
                     def myArray = myString.split(',')
