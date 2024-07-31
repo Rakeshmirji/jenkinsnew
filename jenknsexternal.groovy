@@ -80,8 +80,8 @@ pipeline {
                 jsonConfig = readJSON text: jsonConfigString
                 // Save config as JSON in correct dir
                 writeJSON(file: configPath, json: jsonConfig, pretty: 4)
-                powershellPath = './Automation/CWA_Automation/CWA_Automation/flows/onprem.ps1'
-                result = powershell(returnStatus: true, script: powershellPath)
+                //powershellPath = './Automation/CWA_Automation/CWA_Automation/flows/onprem.ps1'
+                //result = powershell(returnStatus: true, script: powershellPath)
 
 
 
