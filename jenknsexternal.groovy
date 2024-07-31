@@ -61,7 +61,8 @@ pipeline {
                 def value = myArray[i]
                 println "Value: $value, Type: ${value.getClass().getName()}"
                 // You can add more logic here
-            
+                nextDescribeToExecute = ["DescribeToExecute": myArray[i]]
+                configMap << nextDescribeToExecute
                 def jsonConfigString = JsonOutput.toJson(configMap)
                 // Convert JSON string to JSON Object
                 def jsonConfig = readJSON text: jsonConfigString
@@ -73,8 +74,7 @@ pipeline {
                 //CWA_values_map = readJSON text: CWA_values
                 //println("Cwa_Values_onprem is ----  ${params.CWA_values_map}")
 
-                nextDescribeToExecute = ["DescribeToExecute": myArray[i]]
-                configMap << nextDescribeToExecute
+                
 
                 jsonConfigString = JsonOutput.toJson(configMap)
                 jsonConfig = readJSON text: jsonConfigString
