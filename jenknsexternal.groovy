@@ -140,55 +140,55 @@ pipeline {
                 }
             }
         }
-        post {
-            always {
-                script {
-                    if (SnapshotRevert.equalsIgnoreCase("Yes")) {
-                        if ("${env.NODE_NAME}".contains("Azure")) {
-                            println "Revert Snapshot VM in Azure"
-                            try {
-                                println "NODE_NAME -- ${env.NODE_NAME}"
-                                build job: "BVT_JOBS/${SnapshotRevertJob}",
-                                        parameters: [string(name: 'vmname', value: "${env.NODE_NAME}"), string(name: "vmin", value: "Azure")],
-                                        wait: true
-                            } catch (Exception e) {
-                                println(e.toString())
-                                println "Failed to submit Snapshot job"
-                            }
-                        } else {
-                            println "Revert Snapshot in Xencenter"
-                            try {
-                                println "NODE_NAME -- ${env.NODE_NAME}"
-                                build job: "BVT_JOBS/${SnapshotRevertJob}",
-                                        parameters: [string(name: 'vmname', value: "${env.NODE_NAME}"), string(name: "vmin", value: "Xencenter")],
-                                        wait: true
-                            } catch (Exception e) {
-                                println(e.toString())
-                                println "Failed to submit Snapshot job"
-                            }
-                        }
-                        echo "Waiting for VM to disconnect"
-                        def count = 1
-                        while (count <= 50) {
-                            sleep(5)
-                            if (!(nodesByLabel("${env.NODE_NAME}").size() > 0)) {
-                                break
-                            }
-                            count++
-                        }
-
-                        echo "Waiting for VM to connect"
-                        count = 1
-                        while (count <= 100) {
-                            sleep(5)
-                            if (nodesByLabel("${env.NODE_NAME}").size() > 0) {
-                                break
-                            }
-                            count++
+    }
+    post {
+        always {
+            script {
+                if (SnapshotRevert.equalsIgnoreCase("Yes")) {
+                    if ("${env.NODE_NAME}".contains("Azure")) {
+                        println "Revert Snapshot VM in Azure"
+                        try {
+                            println "NODE_NAME -- ${env.NODE_NAME}"
+                            build job: "BVT_JOBS/${SnapshotRevertJob}",
+                                    parameters: [string(name: 'vmname', value: "${env.NODE_NAME}"), string(name: "vmin", value: "Azure")],
+                                    wait: true
+                        } catch (Exception e) {
+                            println(e.toString())
+                            println "Failed to submit Snapshot job"
                         }
                     } else {
-                        println "Revert Snapshot is set to No"
+                        println "Revert Snapshot in Xencenter"
+                        try {
+                            println "NODE_NAME -- ${env.NODE_NAME}"
+                            build job: "BVT_JOBS/${SnapshotRevertJob}",
+                                    parameters: [string(name: 'vmname', value: "${env.NODE_NAME}"), string(name: "vmin", value: "Xencenter")],
+                                    wait: true
+                        } catch (Exception e) {
+                            println(e.toString())
+                            println "Failed to submit Snapshot job"
+                        }
                     }
+                    echo "Waiting for VM to disconnect"
+                    def count = 1
+                    while (count <= 50) {
+                        sleep(5)
+                        if (!(nodesByLabel("${env.NODE_NAME}").size() > 0)) {
+                            break
+                        }
+                        count++
+                    }
+
+                    echo "Waiting for VM to connect"
+                    count = 1
+                    while (count <= 100) {
+                        sleep(5)
+                        if (nodesByLabel("${env.NODE_NAME}").size() > 0) {
+                            break
+                        }
+                        count++
+                    }
+                } else {
+                    println "Revert Snapshot is set to No"
                 }
             }
         }
