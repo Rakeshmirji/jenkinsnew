@@ -71,7 +71,6 @@ def jsonConfigString = JsonOutput.toJson(configMap)
 def jsonConfig = readJSON text: jsonConfigString
 
 pipeline {
-    agent { label TestNode }
     stages {
             stage('Test Execution') {
                 steps {
