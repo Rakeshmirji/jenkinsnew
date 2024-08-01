@@ -73,7 +73,7 @@ def jsonConfig = readJSON text: jsonConfigString
 pipeline {
     stages {
             stage('Test Execution') {
-                node('APPPnode_10.109.201.172'){
+                node('APPPnode_10.109.201.172')
                 steps {
                     script {
                         def myString = params.describe_bocks
@@ -219,4 +219,3 @@ pipeline {
             }
     }
 
-}
