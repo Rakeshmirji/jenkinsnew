@@ -73,6 +73,7 @@ def jsonConfig = readJSON text: jsonConfigString
 pipeline {
     stages {
             stage('Test Execution') {
+                node('APPPnode_10.109.201.172'){
                 steps {
                     script {
                         def myString = params.describe_bocks
@@ -131,31 +132,32 @@ pipeline {
                                         //     stage1Passed = true
                                         //     bat 'shutdown -r -f'
                                         // }
+                                        echo "Waiting for VM to reboot ${env.NODE_NAME}"
+                                        def count = 1
+                                        while (count <= 50) {
+                                            sleep(5)
+                                            if (!(nodesByLabel("${env.NODE_NAME}").size() > 0)) {
+                                                break
+                                            }
+                                            count++
+                                        }
+
+                                        echo "Waiting for VM to connect"
+                                        count = 1
+                                        while (count <= 100) {
+                                            sleep(5)
+                                            if (nodesByLabel(node_name).size() > 0) {
+                                                break
+                                            }
+                                            count++
+                                        }
                                     } catch (Exception e) {
                                         println(e.toString())
                                         println 'Failed to execute describe block'
                                     }
                                 }
                                 // Check for node is shutdown
-                                echo "Waiting for VM to reboot ${env.NODE_NAME}"
-                                def count = 1
-                                while (count <= 50) {
-                                    sleep(5)
-                                    if (!(nodesByLabel("${env.NODE_NAME}").size() > 0)) {
-                                        break
-                                    }
-                                    count++
-                                }
-
-                                echo "Waiting for VM to connect"
-                                count = 1
-                                while (count <= 100) {
-                                    sleep(5)
-                                    if (nodesByLabel(node_name).size() > 0) {
-                                        break
-                                    }
-                                    count++
-                                }
+                                
                         }
                             archiveArtifacts artifacts: "Automation/CWA_Automation/CWA_Automation/flows/reports/*.*"
                         }
@@ -217,4 +219,4 @@ pipeline {
             }
     }
 
-   
+}
