@@ -73,7 +73,7 @@ def jsonConfig = readJSON text: jsonConfigString
 pipeline {
     agent {
         node {
-            label 'apppxenwin11_10.109.201.217'
+            label 'APPPxenwin11_10.109.201.234'
         }
     }
     stages {
