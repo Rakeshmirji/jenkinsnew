@@ -71,128 +71,48 @@ def jsonConfigString = JsonOutput.toJson(configMap)
 def jsonConfig = readJSON text: jsonConfigString
 
 pipeline {
+    agent {
+        node {
+            label 'apppxenwin11_10.109.201.217'
+        }
+    }
     stages {
-            stage('Test Execution') {
-                node('APPPnode_10.109.201.172')
-                steps {
-                    script {
-                        def myString = params.describe_bocks
-                        println myString
-                        def myArray = myString.split(',')
-                    
-                        for (int i = 0; i < myArray.size(); i++) {
-                                def value = myArray[i]
-                                println "Value: $value, Type: ${value.getClass().getName()}"
-                                script {
-                                    try {
-                                        // Save config as JSON in correct dir
-                                        if (i == 1) { 
-                                            CWA_values_map['downloadBuilds'] = true
-                                        } else {
-                                            CWA_values_map['downloadBuilds'] = false
-                                        }
-                                        // def jsonConfigString = JsonOutput.toJson(configMap)
-                                        // // Convert JSON string to JSON Object
-                                        // def jsonConfig = readJSON text: jsonConfigString
-                                        // // Save config as JSON in correct dir
-                                        // def configPath = "${env.WORKSPACE}/automation1.json"
-                                        // writeJSON(file: configPath, json: jsonConfig, pretty: 4)
-                                        nextDescribeToExecute = ["DescribeToExecute": myArray[i]]
-                                        configMap << nextDescribeToExecute                  
-                                        
-                                        
-                                        
-                                        // CWA_values_map['subtestingsuite'] = 'stress-before-restart'
-                                        // configMap['CWA_values'] = CWA_values_map
-                                        jsonConfigString = JsonOutput.toJson(configMap)
-                                        jsonConfig = readJSON text: jsonConfigString
-                                        configPath = "${env.WORKSPACE}/Automation/CWA_Automation/CWA_Automation/flows/config/Automation.json"
-                                        writeJSON(file: configPath, json: jsonConfig, pretty: 4)
-                                        if (i == 1) {
-                                            downloadLibraries = "${env.WORKSPACE}/Automation/CWA_Automation/CWA_Automation/Common/AutomationLibs.ps1"
-                                            downloadLibrariesResult = powershell(returnStatus: true, script: downloadLibraries)
-                                            //downloadInstallCWA = "${env.WORKSPACE}/Automation/CWA_Automation/CWA_Automation/Common/Uninstall-Download-Install.ps1"
-                                            //downloadInstallCWAResult = powershell(returnStatus: true, script: downloadInstallCWA)
-                                        }
-                                        powershellPath = "${env.WORKSPACE}/Automation/CWA_Automation/CWA_Automation/flows/Automation.ps1"
-                                        result = powershell(returnStatus: true, script: powershellPath)
+        stage('Test Execution') {
+            steps {
+                script {
+                    def myString = params.describe_bocks
+                    println myString
+                    def myArray = myString.split(',')
 
-                                        // nextDescribeToExecute = ["DescribeToExecute": myArray[i]]
-                                        // configMap << nextDescribeToExecute
-
-                                        jsonConfigString = JsonOutput.toJson(configMap)
-                                        jsonConfig = readJSON text: jsonConfigString
-                                        // Save config as JSON in correct dir
-                                        writeJSON(file: configPath, json: jsonConfig, pretty: 4)
-                                        bat 'shutdown -r -f'
-                                        // if (result != 0) {
-                                        //     stage1Passed = false
-                                        // }
-                                        // if (result == 0) {
-                                        //     stage1Passed = true
-                                        //     bat 'shutdown -r -f'
-                                        // }
-                                        echo "Waiting for VM to reboot ${env.NODE_NAME}"
-                                        def count = 1
-                                        while (count <= 50) {
-                                            sleep(5)
-                                            if (!(nodesByLabel("${env.NODE_NAME}").size() > 0)) {
-                                                break
-                                            }
-                                            count++
-                                        }
-
-                                        echo "Waiting for VM to connect"
-                                        count = 1
-                                        while (count <= 100) {
-                                            sleep(5)
-                                            if (nodesByLabel(node_name).size() > 0) {
-                                                break
-                                            }
-                                            count++
-                                        }
-                                    } catch (Exception e) {
-                                        println(e.toString())
-                                        println 'Failed to execute describe block'
-                                    }
-                                }
-                                // Check for node is shutdown
-                                
-                        }
-                            archiveArtifacts artifacts: "Automation/CWA_Automation/CWA_Automation/flows/reports/*.*"
-                        }
-                    }
-                }
-                
-            }
-            post {
-                always {
-                    script {
-                        if (SnapshotRevert.equalsIgnoreCase("Yes")) {
-                            if ("${env.NODE_NAME}".contains("Azure")) {
-                                println "Revert Snapshot VM in Azure"
-                                try{
-                                    println "NODE_NAME -- ${env.NODE_NAME}"
-                                    build job: "BVT_JOBS/${SnapshotRevertJob}",
-                                    parameters: [string(name: 'vmname', value: "${env.NODE_NAME}"), string(name: "vmin", value: "Azure")],
-                                    wait: true
-                                }catch(Exception e){
-                                    println(e.toString())
-                                    println "Failed to submit Snapshot job"
-                                }
+                    for (int i = 0; i < myArray.size(); i++) {
+                        def value = myArray[i]
+                        println "Value: $value, Type: ${value.getClass().getName()}"
+                        try {
+                            // Save config as JSON in correct dir
+                            if (i == 1) {
+                                CWA_values_map['downloadBuilds'] = true
                             } else {
-                                println "Revert Snapshot in Xencenter"
-                                try{
-                                    println "NODE_NAME -- ${env.NODE_NAME}"
-                                    build job: "BVT_JOBS/${SnapshotRevertJob}",
-                                    parameters: [string(name: 'vmname', value: "${env.NODE_NAME}"), string(name: "vmin", value: "Xencenter")],
-                                    wait: true
-                                }catch(Exception e){
-                                    println(e.toString())
-                                    println "Failed to submit Snapshot job"
-                                }
+                                CWA_values_map['downloadBuilds'] = false
                             }
-                            echo "Waiting for VM to disconnect"
+                            nextDescribeToExecute = ["DescribeToExecute": myArray[i]]
+                            configMap << nextDescribeToExecute
+
+                            jsonConfigString = JsonOutput.toJson(configMap)
+                            jsonConfig = readJSON text: jsonConfigString
+                            configPath = "${env.WORKSPACE}/Automation/CWA_Automation/CWA_Automation/flows/config/Automation.json"
+                            writeJSON(file: configPath, json: jsonConfig, pretty: 4)
+                            if (i == 1) {
+                                downloadLibraries = "${env.WORKSPACE}/Automation/CWA_Automation/CWA_Automation/Common/AutomationLibs.ps1"
+                                downloadLibrariesResult = powershell(returnStatus: true, script: downloadLibraries)
+                            }
+                            powershellPath = "${env.WORKSPACE}/Automation/CWA_Automation/CWA_Automation/flows/Automation.ps1"
+                            result = powershell(returnStatus: true, script: powershellPath)
+
+                            jsonConfigString = JsonOutput.toJson(configMap)
+                            jsonConfig = readJSON text: jsonConfigString
+                            writeJSON(file: configPath, json: jsonConfig, pretty: 4)
+                            bat 'shutdown -r -f'
+                            echo "Waiting for VM to reboot ${env.NODE_NAME}"
                             def count = 1
                             while (count <= 50) {
                                 sleep(5)
@@ -211,11 +131,66 @@ pipeline {
                                 }
                                 count++
                             }
-                        } else {
-                            println "Revert Snapshot is set to No"
+                        } catch (Exception e) {
+                            println(e.toString())
+                            println 'Failed to execute describe block'
                         }
-                    } 
+                    }
+                    archiveArtifacts artifacts: "Automation/CWA_Automation/CWA_Automation/flows/reports/*.*"
                 }
             }
-    }
+        }
+        post {
+            always {
+                script {
+                    if (SnapshotRevert.equalsIgnoreCase("Yes")) {
+                        if ("${env.NODE_NAME}".contains("Azure")) {
+                            println "Revert Snapshot VM in Azure"
+                            try {
+                                println "NODE_NAME -- ${env.NODE_NAME}"
+                                build job: "BVT_JOBS/${SnapshotRevertJob}",
+                                        parameters: [string(name: 'vmname', value: "${env.NODE_NAME}"), string(name: "vmin", value: "Azure")],
+                                        wait: true
+                            } catch (Exception e) {
+                                println(e.toString())
+                                println "Failed to submit Snapshot job"
+                            }
+                        } else {
+                            println "Revert Snapshot in Xencenter"
+                            try {
+                                println "NODE_NAME -- ${env.NODE_NAME}"
+                                build job: "BVT_JOBS/${SnapshotRevertJob}",
+                                        parameters: [string(name: 'vmname', value: "${env.NODE_NAME}"), string(name: "vmin", value: "Xencenter")],
+                                        wait: true
+                            } catch (Exception e) {
+                                println(e.toString())
+                                println "Failed to submit Snapshot job"
+                            }
+                        }
+                        echo "Waiting for VM to disconnect"
+                        def count = 1
+                        while (count <= 50) {
+                            sleep(5)
+                            if (!(nodesByLabel("${env.NODE_NAME}").size() > 0)) {
+                                break
+                            }
+                            count++
+                        }
 
+                        echo "Waiting for VM to connect"
+                        count = 1
+                        while (count <= 100) {
+                            sleep(5)
+                            if (nodesByLabel("${env.NODE_NAME}").size() > 0) {
+                                break
+                            }
+                            count++
+                        }
+                    } else {
+                        println "Revert Snapshot is set to No"
+                    }
+                }
+            }
+        }
+    }
+}
