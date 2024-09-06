@@ -84,6 +84,14 @@ Write-Host "the StoreTypeNSffffffffffffffffffffffffffffffG is $Global:StoreTypeN
 # Write-Host "the OnpremPass is $Global:OnpremPass"
 Write-Host "the BuildBranchName is $Global:BuildBranchName"
 $myVariable = Get-Content -Path "variable.txt"
+# Prompt the user for input and store the input in a variable
+$userInput = Read-Host "Please enter a value to continue"
+
+# The script will wait here until the user inputs a value
+Write-Host "You entered: $userInput"
+
+# Continue with the rest of the script
+Write-Host "Now continuing with the next steps..."
 
 # Print the variable
 Write-Host "The variable from Groovy is: $myVariable"
