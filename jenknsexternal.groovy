@@ -111,7 +111,8 @@ pipeline {
                             jsonConfigString = JsonOutput.toJson(configMap)
                             jsonConfig = readJSON text: jsonConfigString
                             writeJSON(file: configPath, json: jsonConfig, pretty: 4)
-                            bat 'shutdown -r -f'
+                            // Reboot VM
+                            //bat 'shutdown -r -f'
                             echo "Waiting for VM to reboot ${env.NODE_NAME}"
                             def count = 1
                             while (count <= 50) {
