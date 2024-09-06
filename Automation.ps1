@@ -93,6 +93,7 @@ Write-Host "You entered: $userInput"
 # Continue with the rest of the script
 Write-Host "Now continuing with the next steps..."
 
+
 # Print the variable
 Write-Host "The variable from Groovy is: $myVariable"
 
