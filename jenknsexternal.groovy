@@ -24,10 +24,11 @@ def myVariable = "Hello, PowerShell!"
 println "CWA_values_rrrrrrrrrrrrrrrrrrrrrrr"
 println "uuuuuuuuuuuuuuuuuuuuuuuuu is ${params.CWA_values_map}"
 pipeline {
-    agent any
-    //  environment {
-    //     MY_ARRAY = "${params.MY_ARRAY}"
-    // }
+    agent {
+        node {
+            label 'xenappp_Agent_10.109.201.139'
+        }
+    }
     stages {
         stage('Build') {
             steps {
