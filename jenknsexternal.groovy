@@ -94,6 +94,13 @@ pipeline {
                             } else {
                                 CWA_values_map['downloadBuilds'] = false
                             }
+                              if (i == (myArray.size() - 1)) {
+                                    CWA_values_map['UploadJsonDataToCosmosDB'] = true
+                                } else {
+                                    CWA_values_map['UploadJsonDataToCosmosDB'] = false
+                                }
+                                println "UploadJsonDataToCosmosDB: ${CWA_values_map['UploadJsonDataToCosmosDB']}"
+
                             nextDescribeToExecute = ["DescribeToExecute": myArray[i]]
                             configMap << nextDescribeToExecute
 
