@@ -122,8 +122,8 @@ pipeline {
                             //bat 'shutdown -r -f'
                             echo "Waiting for VM to reboot ${env.NODE_NAME}"
                             def count = 1
-                            while (count <= 50) {
-                                sleep(5)
+                            while (count <= 5) {
+                                sleep(1)
                                 if (!(nodesByLabel("${env.NODE_NAME}").size() > 0)) {
                                     break
                                 }
@@ -132,8 +132,8 @@ pipeline {
 
                             echo "Waiting for VM to connect"
                             count = 1
-                            while (count <= 100) {
-                                sleep(5)
+                            while (count <= 5) {
+                                sleep(1)
                                 if (nodesByLabel("${env.NODE_NAME}").size() > 0) {
                                     break
                                 }
