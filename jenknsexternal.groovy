@@ -14,6 +14,7 @@ def SnapshotRevert = params.RevertSnapshot
 def SnapshotRevertJob = params.SnapshotJobName
 def suiteName = params.Test_Suite_Name
 def customPortal_value_map
+def Apps_map = null
 try {
     customPortal_value_map = readJSON text: customPortal
 }
