@@ -24,7 +24,10 @@ configMap << DescribeToExecute
 println "CWA_values_rrrrrrrrrrrrrrrrrrrrrrr"
 println "uuuuuuuuuuuuuuuuuuuuuuuuu is ${params.CWA_values_map}"
 pipeline {
-    agent any
+    agent 
+    node {
+            label 'Apppxenwin10Agent_10.109.201.201'
+        }
     //  environment {
     //     MY_ARRAY = "${params.MY_ARRAY}"
     // }
