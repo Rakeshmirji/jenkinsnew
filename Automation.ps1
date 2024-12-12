@@ -92,3 +92,25 @@ Write-Host "The variable from Groovy is: $myVariable"
 Write-Host "The variable from Groovy is: $myString1"
 $DescribeBlockToExecute = $json.DescribeToExecute
 Write-Host "Describe block to execute $DescribeBlockToExecute"
+[string]$global:App_Paint_Name = if ($null -eq $json.Apps.Paint.Name) { $true } Else { $json.Apps.Paint.Name }
+[string]$global:App_Notepad_Name = if ($null -eq $json.Apps.Notepad.Name) { $true } Else { $json.Apps.Notepad.Name }
+[string]$global:App_Calculator_Name = if ($null -eq $json.Apps.Calculator.Name) { $true } Else { $json.Apps.Calculator.Name }
+[string]$global:App_Desktop1_Name = if ($null -eq $json.Apps.Desktop1.Name) { $true } Else { $json.Apps.Desktop1.Name }
+[string]$global:App_Desktop2_Name = if ($null -eq $json.Apps.Desktop2.Name) { $true } Else { $json.Apps.Desktop2.Name }
+[string]$global:App_Desktop3_Name = if ($null -eq $json.Apps.Desktop3.Name) { $true } Else { $json.Apps.Desktop3.Name }
+[string]$global:App_Desktop4_Name = if ($null -eq $json.Apps.Desktop4.Name) { $true } Else { $json.Apps.Desktop4.Name }
+
+
+
+
+
+
+$ClientMachineDomainName=$domainName
+Write-Host "App_Paint_Name: $global:App_Paint_Name"
+Write-Host "App_Notepad_Name: $global:App_Notepad_Name"
+Write-Host "App_Calculator_Name: $global:App_Calculator_Name"
+Write-Host "App_Desktop1_Name: $global:App_Desktop1_Name"
+Write-Host "App_Desktop2_Name: $global:App_Desktop2_Name"
+Write-Host "App_Desktop3_Name: $global:App_Desktop3_Name"
+Write-Host "App_Desktop4_Name: $global:App_Desktop4_Name"
+#for finding the version of OS

@@ -60,7 +60,8 @@ def configMap = [
     onpremvalues: onpremvalues_map,
     grafeas: grafeas_values_map,
     customPortal: customPortal_value_map,
-    slack_value:slack_map
+    slack_value:slack_map,
+    Apps:Apps_map
     //CrashDump_values: CrashDump_values_map
 ]
 
