@@ -67,10 +67,10 @@ def configMap = [
 ]
 
 // Convert map object to JSON String
-def jsonConfigString = JsonOutput.toJson(configMap)
+//def jsonConfigString = JsonOutput.toJson(configMap)
 
 // Convert JSON string to JSON Object
-def jsonConfig = readJSON text: jsonConfigString
+//def jsonConfig = readJSON text: jsonConfigString
 def jsonConfigString = JsonOutput.toJson(configMap)
 def jsonConfig = readJSON text: jsonConfigString     
 def configPath = "${env.WORKSPACE}/automation1.json"
