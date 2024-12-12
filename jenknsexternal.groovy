@@ -71,7 +71,10 @@ def jsonConfigString = JsonOutput.toJson(configMap)
 
 // Convert JSON string to JSON Object
 def jsonConfig = readJSON text: jsonConfigString
-
+def jsonConfigString = JsonOutput.toJson(configMap)
+def jsonConfig = readJSON text: jsonConfigString     
+def configPath = "${env.WORKSPACE}/automation1.json"
+writeJSON(file: configPath, json: jsonConfig, pretty: 4)
 pipeline {
     agent {
         node {
