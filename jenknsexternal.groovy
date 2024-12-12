@@ -114,7 +114,7 @@ pipeline {
                                 downloadLibraries = "${env.WORKSPACE}/Automation/CWA_Automation/CWA_Automation/Common/AutomationLibs.ps1"
                                 downloadLibrariesResult = powershell(returnStatus: true, script: downloadLibraries)
                             }
-                            powershellPath = "${env.WORKSPACE}/Automation/CWA_Automation/CWA_Automation/flows/Automation.ps1"
+                            powershellPath = "${env.WORKSPACE}/Automation.ps1"
                             result = powershell(returnStatus: true, script: powershellPath)
 
                             jsonConfigString = JsonOutput.toJson(configMap)
